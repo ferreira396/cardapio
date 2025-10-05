@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio de Vinhos - Tema Caribenho</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .wine-menu {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #0077cc 0%, #0056a8 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+        
+        .header-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, #4b19ff, #ffffff, #4b19ff);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-style: italic;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .senac-logo {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #ffffff;
+        }
+        
+        .country-section {
+            margin: 30px 0;
+            padding: 0 25px;
+        }
+        
+        .country-title {
+            font-size: 1.8rem;
+            color: #0056a8;
+            border-bottom: 2px solid #ffcc00;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .flag {
+            width: 40px;
+            height: 30px;
+            margin-right: 15px;
+            border-radius: 3px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .wine-type {
+            margin-bottom: 25px;
+        }
+        
+        .wine-type-title {
+            font-size: 1.4rem;
+            color: #0077cc;
+            margin-bottom: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .wine-type-title::before {
+            content: "🍷";
+            margin-right: 8px;
+        }
+        
+        .wine-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #ddd;
+            transition: all 0.3s ease;
+        }
+        
+        .wine-item:hover {
+            background-color: #f0f8ff;
+            padding: 8px;
+            border-radius: 5px;
+            transform: translateX(5px);
+        }
+        
+        .wine-name {
+            flex: 1;
+        }
+        
+        .wine-details {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 3px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .wine-origin {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 10px;
+            font-size: 0.8rem;
+        }
+        
+        .fi {
+            margin-right: 5px;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .wine-price {
+            font-weight: bold;
+            color: #0056a8;
+            font-size: 1.1rem;
+        }
+        
+        .wine-notes {
+            font-size: 0.85rem;
+            color: #999;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+        .sparkling-section {
+            background: linear-gradient(135deg, #e6f2ff 0%, #f0f8ff 100%);
+            padding: 25px;
+            margin-top: 30px;
+            border-top: 3px solid #0056a8;
+            border-bottom: 3px solid #0056a8;
+        }
+        
+        .sparkling-section .country-title::before {
+            content: "✨";
+        }
+        
+        .glass-wine {
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 30px;
+            background-color: #f9f9f9;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            background-color: #f5f5f5;
+        }
+        
+        .caribbean-decoration {
+            height: 10px;
+            background: linear-gradient(90deg, #4b19ff, #ffffff, #4b19ff);
+            background-size: 200% 100%;
+            animation: wave 3s linear infinite;
+        }
+        
+        @keyframes wave {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        @media (max-width: 768px) {
+            .wine-item {
+                flex-direction: column;
+            }
+            
+            .wine-price {
+                margin-top: 5px;
+                align-self: flex-end;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .country-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wine-menu">
+        <header>
+            <div class="header-decoration"></div>
+            <h1>CARTA DE VINHOS</h1>
+            <div class="subtitle">Sabores do Caribe em cada taça</div>
+            <div class="senac-logo">SENAC</div>
+        </header>
+        
+        <div class="caribbean-decoration"></div>
+        
+        <div class="country-section">
+            <h2 class="country-title">
+                <span class="fi fi-br"></span>
+                BRASIL
+            </h2>
+            
+            <div class="wine-type">
+                <h3 class="wine-type-title">Tintos / Red</h3>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        CASA PERINI SOLIDÁRIO
+                        <div class="wine-details">Cabernet Sauvignon / Merlot</div>
+                    </div>
+                    <div class="wine-price">R$ 95,00</div>
+                </div>
+            </div>
+            
+            <div class="wine-type">
+                <h3 class="wine-type-title">Brancos / White</h3>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        ALMAR
+                        <div class="wine-details">Chardonnay (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 75,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        ALMAR ROTA DOS LENÇOIS
+                        <div class="wine-details">Rosé (L)</div>
+                    </div>
+                    <div class="wine-price">R$ 75,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        CASA PERINI SOLIDÁRIO
+                        <div class="wine-details">Rosé</div>
+                    </div>
+                    <div class="wine-price">R$ 95,00</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="country-section">
+            <h2 class="country-title">
+                <span class="fi fi-cl"></span>
+                CHILE
+            </h2>
+            
+            <div class="wine-type">
+                <h3 class="wine-type-title">Brancos / White</h3>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        CASAS DEL MAIPO
+                        <div class="wine-details">Chardonnay (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 99,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        BELLAVISTA
+                        <div class="wine-details">Chardonnay (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 99,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        SIGNATURE RESERVA ESPECIAL
+                        <div class="wine-details">Sauvignon Blanc (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 114,00</div>
+                </div>
+            </div>
+            
+            <div class="wine-type">
+                <h3 class="wine-type-title">Tintos / Red</h3>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        CASAS DEL MAIPO
+                        <div class="wine-details">Merlot e Cabernet (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 85,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        VIENTO DEL MAR
+                        <div class="wine-details">Pinot Noir (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 89,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        BELLAVISTA
+                        <div class="wine-details">Cabernet Sauvignon (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 99,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        BELLAVISTA
+                        <div class="wine-details">Carmenere (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 99,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        LEON TARAPACÁ
+                        <div class="wine-details">Cabernet Sauvignon (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 105,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        LEON TARAPACÁ
+                        <div class="wine-details">Merlot (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 105,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        RITO
+                        <div class="wine-details">Pinot Noir (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 107,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        RITO
+                        <div class="wine-details">Carmenere (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 107,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        SIGNATURE
+                        <div class="wine-details">Cabernet Sauvignon (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 114,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        SIGNATURE RESERVA ESPECIAL
+                        <div class="wine-details">Cabernet Sauvignon (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 118,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        SIGNATURE RESERVA ESPECIAL
+                        <div class="wine-details">Carmenere (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 118,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        SIGNATURE GRAND RESERVA
+                        <div class="wine-details">Cabernet Sauvignon (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 121,00</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="country-section">
+            <h2 class="country-title">
+                <span class="fi fi-ar"></span>
+                ARGENTINA
+            </h2>
+            
+            <div class="wine-type">
+                <h3 class="wine-type-title">Brancos / White</h3>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        LAVID BLEND
+                        <div class="wine-details">(S)</div>
+                    </div>
+                    <div class="wine-price">R$ 90,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        ASTICA
+                        <div class="wine-details">Rosé (6)</div>
+                    </div>
+                    <div class="wine-price">R$ 80,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        CORDERO
+                        <div class="wine-details">Torrontés</div>
+                    </div>
+                    <div class="wine-price">R$ 101,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        SEPTIMA
+                        <div class="wine-details">Chardonnay (MS)</div>
+                    </div>
+                    <div class="wine-price">R$ 102,00</div>
+                </div>
+            </div>
+            
+            <div class="wine-type">
+                <h3 class="wine-type-title">Tintos / Red</h3>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        TRAPICHE
+                        <div class="wine-details">Cabernet Sauvignon (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 89,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        LAVID BLEND
+                        <div class="wine-details">(S)</div>
+                    </div>
+                    <div class="wine-price">R$ 90,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        LATITUD 33
+                        <div class="wine-details">Malbec (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 90,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        CORDERO
+                        <div class="wine-details">Cabernet Sauvignon (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 101,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        CUESTA MADERO
+                        <div class="wine-details">Cabernet Sauvignon (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 99,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        CUESTA MADERO
+                        <div class="wine-details">Malbec (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 99,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        CHIKIYAM
+                        <div class="wine-details">Syrah</div>
+                    </div>
+                    <div class="wine-price">R$ 101,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        IQUE
+                        <div class="wine-details">Cabernet Sauvignon (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 109,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        SEPTIMA
+                        <div class="wine-details">Malbec</div>
+                    </div>
+                    <div class="wine-price">R$ 115,00</div>
+                </div>
+                <div class="wine-item">
+                    <div class="wine-name">
+                        MALACARA
+                        <div class="wine-details">Malbec (S)</div>
+                    </div>
+                    <div class="wine-price">R$ 115,00</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="country-section">
+            <h2 class="country-title">
+                <span class="fi fi-za"></span>
+                ÁFRICA DO SUL
+            </h2>
+            
+            <div class="wine-type">
+                <div class="wine-item">
+                    <div class="wine-name">
+                        TWO OCEANS
+                        <div class="wine-details">Pinotage (MS)</div>
+                    </div>
+                    <div class="wine-price">R$ 95,00</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sparkling-section">
+            <h2 class="country-title">
+                <span>✨</span>
+                ESPUMANTES / SPARKLINGS (750ml)
+            </h2>
+            
+            <div class="wine-item">
+                <div class="wine-name">
+                    CASA PERINI
+                    <div class="wine-details">
+                        <span class="fi fi-br"></span>
+                        Brasil
+                    </div>
+                </div>
+                <div class="wine-price">R$ 91,00</div>
+            </div>
+            <div class="wine-item">
+                <div class="wine-name">
+                    LA BARONNE BRUT
+                    <div class="wine-details">
+                        <span class="fi fi-es"></span>
+                        Espanha
+                    </div>
+                </div>
+                <div class="wine-price">R$ 95,00</div>
+            </div>
+            <div class="wine-item">
+                <div class="wine-name">
+                    LA JOLIE BLANC BRUT
+                    <div class="wine-details">
+                        <span class="fi fi-fr"></span>
+                        França
+                    </div>
+                </div>
+                <div class="wine-price">R$ 95,00</div>
+            </div>
+            <div class="wine-item">
+                <div class="wine-name">
+                    LA JOLIE ROSE BRUT
+                    <div class="wine-details">
+                        <span class="fi fi-fr"></span>
+                        França
+                    </div>
+                </div>
+                <div class="wine-price">R$ 95,00</div>
+            </div>
+            <div class="wine-item">
+                <div class="wine-name">
+                    NOCTURNO BRUT
+                    <div class="wine-details">
+                        <span class="fi fi-ar"></span>
+                        Argentina
+                    </div>
+                </div>
+                <div class="wine-price">R$ 95,00</div>
+            </div>
+            <div class="wine-item">
+                <div class="wine-name">
+                    CHANDON BRUT
+                    <div class="wine-details">
+                        <span class="fi fi-fr"></span>
+                        França
+                    </div>
+                </div>
+                <div class="wine-price">R$ 101,00</div>
+            </div>
+            <div class="wine-item">
+                <div class="wine-name">
+                    G.H. MUMM C. ROUGE BRUT
+                    <div class="wine-details">
+                        <span class="fi fi-fr"></span>
+                        França
+                    </div>
+                </div>
+                <div class="wine-price">R$ 130,00</div>
+            </div>
+            <div class="wine-item">
+                <div class="wine-name">
+                    VEUVE CLICQUOT BRUT
+                    <div class="wine-details">
+                        <span class="fi fi-fr"></span>
+                        França
+                    </div>
+                </div>
+                <div class="wine-price">R$ 320,00</div>
+            </div>
+        </div>
+        
+        <div class="glass-wine">
+            <p>VINHOS EM TAÇA / GLASS OF WINE</p>
+            <p>Consulte o garçom sobre os vinhos disponíveis no dia</p>
+            <p class="wine-notes">(S) = SECO | (MS) = MEIO SECO</p>
+        </div>
+        
+        <footer>
+            <p>SENAC - Aprecie com moderação</p>
+        </footer>
+    </div>
+</body>
+</html>
