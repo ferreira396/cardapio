@@ -134,6 +134,12 @@
             justify-content: space-between;
             padding: 12px 0;
             border-bottom: 1px dashed #e2e8f0;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .menu-item:hover {
+            background-color: rgba(59, 130, 246, 0.05);
         }
         
         .item-details {
@@ -192,6 +198,129 @@
         .highlight {
             background-color: rgba(59, 130, 246, 0.1);
             border-radius: 5px;
+        }
+        
+        /* Estilos para as abas de imagem */
+        .image-tab {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .image-tab.active {
+            display: flex;
+        }
+        
+        .image-container {
+            max-width: 90%;
+            max-height: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .drink-image {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .drink-name {
+            font-size: 1.8rem;
+            margin: 20px 0 10px;
+            color: white;
+            text-align: center;
+        }
+        
+        .drink-description {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #b8b8b8;
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2.5rem;
+            color: #fff;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-btn:hover {
+            color: #3b82f6;
+        }
+        
+        .image-nav {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0 30px;
+        }
+        
+        .nav-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .nav-btn:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .menu-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .item-price {
+                margin-left: 0;
+                margin-top: 10px;
+                align-self: flex-end;
+            }
+            
+            .image-nav {
+                padding: 0 15px;
+            }
+            
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .drink-name {
+                font-size: 1.4rem;
+            }
+            
+            .drink-description {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -352,153 +481,153 @@
                     <span class="category-icon">🍹</span>
                     <h2>Drinks & Coquetéis</h2>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Caipirissima', 'rum e limão', 'images/caipirissima.jpg')">
                     <div class="item-details">
                         <div class="item-name">Caipirissima</div>
                         <div class="item-description">rum e limão</div>
                     </div>
                     <div class="item-price">R$ 20,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Caipirinha', 'cachaça 51, limão e açúcar', 'images/caipirinha.jpg')">
                     <div class="item-details">
                         <div class="item-name">Caipirinha</div>
                         <div class="item-description">cachaça 51, limão e açúcar</div>
                     </div>
                     <div class="item-price">R$ 22,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Caipirinha especial', 'cachaça especial, limão e açúcar', 'images/caipirinha-especial.jpg')">
                     <div class="item-details">
                         <div class="item-name">Caipirinha especial</div>
                         <div class="item-description">cachaça especial, limão e açúcar</div>
                     </div>
                     <div class="item-price">R$ 26,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Caipirinha com outras frutas', 'cachaça 51, fruta e limão', 'images/caipirinha-frutas.jpg')">
                     <div class="item-details">
                         <div class="item-name">Caipirinha com outras frutas</div>
                         <div class="item-description">cachaça 51, fruta e limão</div>
                     </div>
                     <div class="item-price">R$ 26,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Caipirinha c/ outras frutas', 'cachaça especial', 'images/caipirinha-frutas-especial.jpg')">
                     <div class="item-details">
                         <div class="item-name">Caipirinha c/ outras frutas</div>
                         <div class="item-description">cachaça especial</div>
                     </div>
                     <div class="item-price">R$ 30,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Caipiroska c/ outras frutas', 'vodka nacional', 'images/caipiroska-frutas.jpg')">
                     <div class="item-details">
                         <div class="item-name">Caipiroska c/ outras frutas</div>
                         <div class="item-description">vodka nacional</div>
                     </div>
                     <div class="item-price">R$ 30,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Caipiroska', 'vodka nacional, limão e açúcar', 'images/caipiroska.jpg')">
                     <div class="item-details">
                         <div class="item-name">Caipiroska</div>
                         <div class="item-description">vodka nacional, limão e açúcar</div>
                     </div>
                     <div class="item-price">R$ 28,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Caipiroska com Absolut', 'Vodka, limão e açúcar', 'images/caipiroska-absolut.jpg')">
                     <div class="item-details">
                         <div class="item-name">Caipiroska com Absolut</div>
                         <div class="item-description">Vodka, limão e açúcar</div>
                     </div>
                     <div class="item-price">R$ 30,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Caipiroska com Absolut e outras frutas', '', 'images/caipiroska-absolut-frutas.jpg')">
                     <div class="item-details">
                         <div class="item-name">Caipiroska com Absolut e outras frutas</div>
                     </div>
                     <div class="item-price">R$ 34,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Caipiroska c/ Belvedere ou Grey Goose', 'limão e açúcar', 'images/caipiroska-premium.jpg')">
                     <div class="item-details">
                         <div class="item-name">Caipiroska c/ Belvedere ou Grey Goose</div>
                         <div class="item-description">limão e açúcar</div>
                     </div>
                     <div class="item-price">R$ 38,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Aperol Spritz', 'Aperol, espumante e água com gás', 'images/aperol-spritz.jpg')">
                     <div class="item-details">
                         <div class="item-name">Aperol Spritz</div>
                         <div class="item-description">Aperol, espumante e água com gás</div>
                     </div>
                     <div class="item-price">R$ 30,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Dry Martini', 'Gin, Vermute seco, azeitona', 'images/dry-martini.jpg')">
                     <div class="item-details">
                         <div class="item-name">Dry Martini</div>
                         <div class="item-description">Gin, Vermute seco, azeitona</div>
                     </div>
                     <div class="item-price">R$ 24,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Garibaldi', 'Campari, suco de laranja e licor de laranja', 'images/garibaldi.jpg')">
                     <div class="item-details">
                         <div class="item-name">Garibaldi</div>
                         <div class="item-description">Campari, suco de laranja e licor de laranja</div>
                     </div>
                     <div class="item-price">R$ 26,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Gin Basil Smash', 'Gin, manjericão, suco de limão, xarope de açúcar', 'images/gin-basil-smash.jpg')">
                     <div class="item-details">
                         <div class="item-name">Gin Basil Smash</div>
                         <div class="item-description">Gin, manjericão, suco de limão, xarope de açúcar</div>
                     </div>
                     <div class="item-price">R$ 28,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Moscow Mule', 'Vodka, suco de limão, xarope de açúcar, Bitter', 'images/moscow-mule.jpg')">
                     <div class="item-details">
                         <div class="item-name">Moscow Mule</div>
                         <div class="item-description">Vodka, suco de limão, xarope de açúcar, Bitter</div>
                     </div>
                     <div class="item-price">R$ 30,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Mint Julep', 'Uísque, folhas de hortelã, xarope de açúcar', 'images/mint-julep.jpg')">
                     <div class="item-details">
                         <div class="item-name">Mint Julep</div>
                         <div class="item-description">Uísque, folhas de hortelã, xarope de açúcar</div>
                     </div>
                     <div class="item-price">R$ 26,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Margarita', 'tequila, suco de limão, cointreau', 'images/margarita.jpg')">
                     <div class="item-details">
                         <div class="item-name">Margarita</div>
                         <div class="item-description">tequila, suco de limão, cointreau</div>
                     </div>
                     <div class="item-price">R$ 28,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Negroni', 'Campari, Gin, Vermute tinto', 'images/negroni.jpg')">
                     <div class="item-details">
                         <div class="item-name">Negroni</div>
                         <div class="item-description">Campari, Gin, Vermute tinto</div>
                     </div>
                     <div class="item-price">R$ 26,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Mojito', 'Rum branco, hortelã, açúcar', 'images/mojito.jpg')">
                     <div class="item-details">
                         <div class="item-name">Mojito</div>
                         <div class="item-description">Rum branco, hortelã, açúcar</div>
                     </div>
                     <div class="item-price">R$ 28,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Fitzgerald', 'gim, limão-siciliano, bitter e xarope de açúcar', 'images/fitzgerald.jpg')">
                     <div class="item-details">
                         <div class="item-name">Fitzgerald</div>
                         <div class="item-description">gim, limão-siciliano, bitter e xarope de açúcar</div>
                     </div>
                     <div class="item-price">R$ 26,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Dama de Vermelho**', 'cachaça maranhense, suco de limão e xarope de frutas vermelhas', 'images/dama-vermelho.jpg')">
                     <div class="item-details">
                         <div class="item-name">Dama de Vermelho**</div>
                         <div class="item-description">cachaça maranhense, suco de limão e xarope de frutas vermelhas</div>
                     </div>
                     <div class="item-price">R$ 24,00</div>
                 </div>
-                <div class="menu-item">
+                <div class="menu-item" onclick="openImageTab('Ludovicense**', 'cachaça maranhense, suco de limão e xarope de maracujá', 'images/ludovicense.jpg')">
                     <div class="item-details">
                         <div class="item-name">Ludovicense**</div>
                         <div class="item-description">cachaça maranhense, suco de limão e xarope de maracujá</div>
@@ -859,6 +988,20 @@
             <p>@restaurantesenacma</p>
         </div>
     </div>
+    
+    <!-- Aba de imagem para os drinks -->
+    <div class="image-tab" id="imageTab">
+        <span class="close-btn" onclick="closeImageTab()">&times;</span>
+        <div class="image-nav">
+            <button class="nav-btn" onclick="navigateImage(-1)">&#10094;</button>
+            <button class="nav-btn" onclick="navigateImage(1)">&#10095;</button>
+        </div>
+        <div class="image-container">
+            <img class="drink-image" id="drinkImage" src="" alt="Imagem do drink">
+        </div>
+        <h2 class="drink-name" id="drinkName"></h2>
+        <p class="drink-description" id="drinkDescription"></p>
+    </div>
 
     <script>
         // Navegação por abas
@@ -906,5 +1049,107 @@
                 });
             }
         });
+        
+        // Array com informações dos drinks
+        const drinks = [
+            { name: 'Caipirissima', description: 'rum e limão', image: 'images/caipirissima.jpg' },
+            { name: 'Caipirinha', description: 'cachaça 51, limão e açúcar', image: 'images/caipirinha.jpg' },
+            { name: 'Caipirinha especial', description: 'cachaça especial, limão e açúcar', image: 'images/caipirinha-especial.jpg' },
+            { name: 'Caipirinha com outras frutas', description: 'cachaça 51, fruta e limão', image: 'images/caipirinha-frutas.jpg' },
+            { name: 'Caipirinha c/ outras frutas', description: 'cachaça especial', image: 'images/caipirinha-frutas-especial.jpg' },
+            { name: 'Caipiroska c/ outras frutas', description: 'vodka nacional', image: 'images/caipiroska-frutas.jpg' },
+            { name: 'Caipiroska', description: 'vodka nacional, limão e açúcar', image: 'images/caipiroska.jpg' },
+            { name: 'Caipiroska com Absolut', description: 'Vodka, limão e açúcar', image: 'images/caipiroska-absolut.jpg' },
+            { name: 'Caipiroska com Absolut e outras frutas', description: '', image: 'images/caipiroska-absolut-frutas.jpg' },
+            { name: 'Caipiroska c/ Belvedere ou Grey Goose', description: 'limão e açúcar', image: 'images/caipiroska-premium.jpg' },
+            { name: 'Aperol Spritz', description: 'Aperol, espumante e água com gás', image: 'images/aperol-spritz.jpg' },
+            { name: 'Dry Martini', description: 'Gin, Vermute seco, azeitona', image: 'images/dry-martini.jpg' },
+            { name: 'Garibaldi', description: 'Campari, suco de laranja e licor de laranja', image: 'images/garibaldi.jpg' },
+            { name: 'Gin Basil Smash', description: 'Gin, manjericão, suco de limão, xarope de açúcar', image: 'images/gin-basil-smash.jpg' },
+            { name: 'Moscow Mule', description: 'Vodka, suco de limão, xarope de açúcar, Bitter', image: 'images/moscow-mule.jpg' },
+            { name: 'Mint Julep', description: 'Uísque, folhas de hortelã, xarope de açúcar', image: 'images/mint-julep.jpg' },
+            { name: 'Margarita', description: 'tequila, suco de limão, cointreau', image: 'images/margarita.jpg' },
+            { name: 'Negroni', description: 'Campari, Gin, Vermute tinto', image: 'images/negroni.jpg' },
+            { name: 'Mojito', description: 'Rum branco, hortelã, açúcar', image: 'images/mojito.jpg' },
+            { name: 'Fitzgerald', description: 'gim, limão-siciliano, bitter e xarope de açúcar', image: 'images/fitzgerald.jpg' },
+            { name: 'Dama de Vermelho**', description: 'cachaça maranhense, suco de limão e xarope de frutas vermelhas', image: 'images/dama-vermelho.jpg' },
+            { name: 'Ludovicense**', description: 'cachaça maranhense, suco de limão e xarope de maracujá', image: 'images/ludovicense.jpg' }
+        ];
+        
+        let currentDrinkIndex = 0;
+        
+        // Função para abrir a aba de imagem
+        function openImageTab(name, description, image) {
+            const imageTab = document.getElementById('imageTab');
+            const drinkImage = document.getElementById('drinkImage');
+            const drinkName = document.getElementById('drinkName');
+            const drinkDescription = document.getElementById('drinkDescription');
+            
+            // Encontrar o índice do drink atual
+            currentDrinkIndex = drinks.findIndex(drink => drink.name === name);
+            
+            // Definir a imagem, nome e descrição
+            drinkImage.src = image;
+            drinkImage.alt = `Imagem de ${name}`;
+            drinkName.textContent = name;
+            drinkDescription.textContent = description;
+            
+            // Mostrar a aba
+            imageTab.classList.add('active');
+            
+            // Adicionar evento de teclado para navegação
+            document.addEventListener('keydown', handleKeyPress);
+        }
+        
+        // Função para fechar a aba de imagem
+        function closeImageTab() {
+            const imageTab = document.getElementById('imageTab');
+            imageTab.classList.remove('active');
+            
+            // Remover evento de teclado
+            document.removeEventListener('keydown', handleKeyPress);
+        }
+        
+        // Função para navegar entre as imagens
+        function navigateImage(direction) {
+            currentDrinkIndex += direction;
+            
+            // Verificar os limites
+            if (currentDrinkIndex < 0) {
+                currentDrinkIndex = drinks.length - 1;
+            } else if (currentDrinkIndex >= drinks.length) {
+                currentDrinkIndex = 0;
+            }
+            
+            // Atualizar a imagem e informações
+            const drink = drinks[currentDrinkIndex];
+            const drinkImage = document.getElementById('drinkImage');
+            const drinkName = document.getElementById('drinkName');
+            const drinkDescription = document.getElementById('drinkDescription');
+            
+            drinkImage.src = drink.image;
+            drinkImage.alt = `Imagem de ${drink.name}`;
+            drinkName.textContent = drink.name;
+            drinkDescription.textContent = drink.description;
+        }
+        
+        // Função para lidar com eventos de teclado
+        function handleKeyPress(event) {
+            if (event.key === 'Escape') {
+                closeImageTab();
+            } else if (event.key === 'ArrowLeft') {
+                navigateImage(-1);
+            } else if (event.key === 'ArrowRight') {
+                navigateImage(1);
+            }
+        }
+        
+        // Fechar a aba ao clicar fora da imagem
+        document.getElementById('imageTab').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeImageTab();
+            }
+        });
     </script>
 </body>
+</html>
