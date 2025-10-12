@@ -32,6 +32,7 @@
             padding: 25px 15px;
             text-align: center;
             border-bottom: 3px solid #1e40af;
+            position: relative;
         }
         
         h1 {
@@ -44,6 +45,35 @@
         .subtitle {
             font-size: 1rem;
             color: #dbeafe;
+        }
+        
+        .language-selector {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .lang-btn.active {
+            background: white;
+            color: #1e3a8a;
+            font-weight: bold;
         }
         
         .search-bar {
@@ -321,33 +351,44 @@
             .drink-description {
                 font-size: 0.9rem;
             }
+            
+            .language-selector {
+                position: static;
+                justify-content: center;
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>CARTA DE BAR</h1>
-            <p class="subtitle">Bar SENAC/SENAC</p>
+            <h1 data-i18n="title">CARTA DE BAR</h1>
+            <p class="subtitle" data-i18n="subtitle">Bar SENAC/SENAC</p>
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="pt">🇧🇷 PT</button>
+                <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
+                <button class="lang-btn" data-lang="fr">🇫🇷 FR</button>
+            </div>
         </header>
         
         <div class="search-bar">
-            <input type="text" class="search-input" placeholder="🔍 Pesquisar no cardápio...">
+            <input type="text" class="search-input" data-i18n-placeholder="search" placeholder="🔍 Pesquisar no cardápio...">
         </div>
         
         <div class="nav-tabs">
-            <div class="nav-tab active" data-tab="bebidas">Bebidas</div>
-            <div class="nav-tab" data-tab="drinks">Drinks</div>
-            <div class="nav-tab" data-tab="cervejas">Cervejas</div>
-            <div class="nav-tab" data-tab="destilados">Destilados</div>
-            <div class="nav-tab" data-tab="sucos">Sucos & Águas</div>
+            <div class="nav-tab active" data-tab="bebidas" data-i18n="tab_drinks">Bebidas</div>
+            <div class="nav-tab" data-tab="drinks" data-i18n="tab_cocktails">Drinks</div>
+            <div class="nav-tab" data-tab="cervejas" data-i18n="tab_beers">Cervejas</div>
+            <div class="nav-tab" data-tab="destilados" data-i18n="tab_spirits">Destilados</div>
+            <div class="nav-tab" data-tab="sucos" data-i18n="tab_juices">Sucos & Águas</div>
         </div>
         
         <div class="tab-content active" id="bebidas">
             <div class="menu-category">
                 <div class="category-title">
                     <span class="category-icon">🥃</span>
-                    <h2>Aguardentes e Cachaças Maranhenses (dose)</h2>
+                    <h2 data-i18n="category_cachaca">Aguardentes e Cachaças Maranhenses (dose)</h2>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
@@ -366,7 +407,7 @@
             <div class="menu-category">
                 <div class="category-title">
                     <span class="category-icon">🍶</span>
-                    <h2>Cachaças Especiais (dose)</h2>
+                    <h2 data-i18n="category_special_cachaca">Cachaças Especiais (dose)</h2>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
@@ -403,7 +444,7 @@
             <div class="menu-category">
                 <div class="category-title">
                     <span class="category-icon">🥃</span>
-                    <h2>Whiskys (dose)</h2>
+                    <h2 data-i18n="category_whisky">Whiskys (dose)</h2>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
@@ -446,7 +487,7 @@
             <div class="menu-category">
                 <div class="category-title">
                     <span class="category-icon">🍷</span>
-                    <h2>Licores (cálice)</h2>
+                    <h2 data-i18n="category_liqueurs">Licores (cálice)</h2>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
@@ -479,7 +520,7 @@
             <div class="menu-category">
                 <div class="category-title">
                     <span class="category-icon">🍹</span>
-                    <h2>Drinks & Coquetéis</h2>
+                    <h2 data-i18n="category_cocktails">Drinks & Coquetéis</h2>
                 </div>
                 <div class="menu-item" onclick="openImageTab('Caipirissima', 'rum e limão', 'images/caipirissima.jpg')">
                     <div class="item-details">
@@ -634,7 +675,7 @@
                     </div>
                     <div class="item-price">R$ 24,00</div>
                 </div>
-                <p class="note">* outras frutas = qualquer fruta diferente de limão / ** coquetéis autorais</p>
+                <p class="note" data-i18n="cocktail_note">* outras frutas = qualquer fruta diferente de limão / ** coquetéis autorais</p>
             </div>
         </div>
         
@@ -642,7 +683,7 @@
             <div class="menu-category">
                 <div class="category-title">
                     <span class="category-icon">🍺</span>
-                    <h2>Cervejas</h2>
+                    <h2 data-i18n="category_beers">Cervejas</h2>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
@@ -685,7 +726,7 @@
             <div class="menu-category">
                 <div class="category-title">
                     <span class="category-icon">⚡</span>
-                    <h2>Energético</h2>
+                    <h2 data-i18n="category_energy">Energético</h2>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
@@ -700,7 +741,7 @@
             <div class="menu-category">
                 <div class="category-title">
                     <span class="category-icon">🍸</span>
-                    <h2>Aperitivos (dose)</h2>
+                    <h2 data-i18n="category_aperitifs">Aperitivos (dose)</h2>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
@@ -725,7 +766,7 @@
             <div class="menu-category">
                 <div class="category-title">
                     <span class="category-icon">🥂</span>
-                    <h2>Destilados (dose)</h2>
+                    <h2 data-i18n="category_spirits">Destilados (dose)</h2>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
@@ -798,7 +839,7 @@
             <div class="menu-category">
                 <div class="category-title">
                     <span class="category-icon">🍷</span>
-                    <h2>Conhaques (dose)</h2>
+                    <h2 data-i18n="category_cognac">Conhaques (dose)</h2>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
@@ -825,7 +866,7 @@
             <div class="menu-category">
                 <div class="category-title">
                     <span class="category-icon">🥤</span>
-                    <h2>Água Mineral e Refrigerantes</h2>
+                    <h2 data-i18n="category_water_soda">Água Mineral e Refrigerantes</h2>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
@@ -850,7 +891,7 @@
             <div class="menu-category">
                 <div class="category-title">
                     <span class="category-icon">🧃</span>
-                    <h2>Sucos</h2>
+                    <h2 data-i18n="category_juices">Sucos</h2>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
@@ -923,7 +964,7 @@
             <div class="menu-category">
                 <div class="category-title">
                     <span class="category-icon">🥥</span>
-                    <h2>Água de Coco (natural)</h2>
+                    <h2 data-i18n="category_coconut">Água de Coco (natural)</h2>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
@@ -948,7 +989,7 @@
             <div class="menu-category">
                 <div class="category-title">
                     <span class="category-icon">☕</span>
-                    <h2>Cafés & Chás</h2>
+                    <h2 data-i18n="category_coffee_tea">Cafés & Chás</h2>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
@@ -984,7 +1025,7 @@
         </div>
         
         <div class="footer">
-            <p>Não cobramos 10%</p>
+            <p data-i18n="footer_no_charge">Não cobramos 10%</p>
             <p>@restaurantesenacma</p>
         </div>
     </div>
@@ -1004,6 +1045,127 @@
     </div>
 
     <script>
+        // Sistema de internacionalização
+        const translations = {
+            pt: {
+                title: "CARTA DE BAR",
+                subtitle: "Bar SENAC/SENAC",
+                search: "🔍 Pesquisar no cardápio...",
+                tab_drinks: "Bebidas",
+                tab_cocktails: "Drinks",
+                tab_beers: "Cervejas",
+                tab_spirits: "Destilados",
+                tab_juices: "Sucos & Águas",
+                category_cachaca: "Aguardentes e Cachaças Maranhenses (dose)",
+                category_special_cachaca: "Cachaças Especiais (dose)",
+                category_whisky: "Whiskys (dose)",
+                category_liqueurs: "Licores (cálice)",
+                category_cocktails: "Drinks & Coquetéis",
+                category_beers: "Cervejas",
+                category_energy: "Energético",
+                category_aperitifs: "Aperitivos (dose)",
+                category_spirits: "Destilados (dose)",
+                category_cognac: "Conhaques (dose)",
+                category_water_soda: "Água Mineral e Refrigerantes",
+                category_juices: "Sucos",
+                category_coconut: "Água de Coco (natural)",
+                category_coffee_tea: "Cafés & Chás",
+                cocktail_note: "* outras frutas = qualquer fruta diferente de limão / ** coquetéis autorais",
+                footer_no_charge: "Não cobramos 10%"
+            },
+            en: {
+                title: "BAR MENU",
+                subtitle: "SENAC Bar",
+                search: "🔍 Search the menu...",
+                tab_drinks: "Drinks",
+                tab_cocktails: "Cocktails",
+                tab_beers: "Beers",
+                tab_spirits: "Spirits",
+                tab_juices: "Juices & Water",
+                category_cachaca: "Maranhense Aguardentes and Cachaças (shot)",
+                category_special_cachaca: "Special Cachaças (shot)",
+                category_whisky: "Whiskys (shot)",
+                category_liqueurs: "Liqueurs (glass)",
+                category_cocktails: "Drinks & Cocktails",
+                category_beers: "Beers",
+                category_energy: "Energy Drink",
+                category_aperitifs: "Aperitifs (shot)",
+                category_spirits: "Spirits (shot)",
+                category_cognac: "Cognacs (shot)",
+                category_water_soda: "Mineral Water and Sodas",
+                category_juices: "Juices",
+                category_coconut: "Coconut Water (natural)",
+                category_coffee_tea: "Coffee & Tea",
+                cocktail_note: "* other fruits = any fruit different from lime / ** signature cocktails",
+                footer_no_charge: "No 10% service charge"
+            },
+            fr: {
+                title: "CARTE DU BAR",
+                subtitle: "Bar SENAC",
+                search: "🔍 Rechercher dans le menu...",
+                tab_drinks: "Boissons",
+                tab_cocktails: "Cocktails",
+                tab_beers: "Bières",
+                tab_spirits: "Spiritueux",
+                tab_juices: "Jus & Eaux",
+                category_cachaca: "Aguardentes et Cachaças Maranhenses (dose)",
+                category_special_cachaca: "Cachaças Spéciales (dose)",
+                category_whisky: "Whiskys (dose)",
+                category_liqueurs: "Liqueurs (verre)",
+                category_cocktails: "Boissons & Cocktails",
+                category_beers: "Bières",
+                category_energy: "Énergisant",
+                category_aperitifs: "Apéritifs (dose)",
+                category_spirits: "Spiritueux (dose)",
+                category_cognac: "Cognacs (dose)",
+                category_water_soda: "Eau Minérale et Sodas",
+                category_juices: "Jus",
+                category_coconut: "Eau de Coco (naturelle)",
+                category_coffee_tea: "Café & Thé",
+                cocktail_note: "* autres fruits = tout fruit différent du citron vert / ** cocktails signature",
+                footer_no_charge: "Pas de frais de service de 10%"
+            }
+        };
+
+        let currentLanguage = 'pt';
+
+        // Função para mudar o idioma
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Atualiza botões de idioma
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Atualiza textos
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Atualiza placeholders
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    element.setAttribute('placeholder', translations[lang][key]);
+                }
+            });
+        }
+
+        // Event listeners para botões de idioma
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                changeLanguage(lang);
+            });
+        });
+
         // Navegação por abas
         document.querySelectorAll('.nav-tab').forEach(tab => {
             tab.addEventListener('click', () => {
