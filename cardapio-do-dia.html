@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio do Dia - SENAC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.5;
+            padding: 10px;
+        }
+        
+        .container {
+            max-width: 100%;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            background: linear-gradient(to right, #dc2626, #ef4444);
+            padding: 25px 15px;
+            text-align: center;
+            border-bottom: 3px solid #b91c1c;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            color: #fecaca;
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .admin-section {
+            padding: 20px;
+            background-color: #fef2f2;
+            border-bottom: 1px solid #fecaca;
+        }
+        
+        .admin-title {
+            color: #dc2626;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .form-input {
+            flex: 1;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            background-color: white;
+            color: #334155;
+            font-size: 1rem;
+        }
+        
+        .btn {
+            background: linear-gradient(to right, #dc2626, #ef4444);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+        
+        .btn:hover {
+            background: linear-gradient(to right, #ef4444, #dc2626);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(to right, #3b82f6, #60a5fa);
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(to right, #60a5fa, #3b82f6);
+        }
+        
+        .btn-clear {
+            background: linear-gradient(to right, #6b7280, #9ca3af);
+        }
+        
+        .btn-clear:hover {
+            background: linear-gradient(to right, #9ca3af, #6b7280);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .menu-display {
+            padding: 20px;
+        }
+        
+        .date-display {
+            text-align: center;
+            color: #dc2626;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .pratos-list {
+            list-style: none;
+        }
+        
+        .prato-item {
+            padding: 15px;
+            border-bottom: 1px dashed #e2e8f0;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .prato-item:last-child {
+            border-bottom: none;
+        }
+        
+        .prato-item:hover {
+            background-color: rgba(220, 38, 38, 0.05);
+        }
+        
+        .prato-icon {
+            color: #dc2626;
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        
+        .prato-actions {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .delete-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .delete-btn:hover {
+            background: #dc2626;
+        }
+        
+        .empty-message {
+            text-align: center;
+            padding: 40px;
+            color: #94a3b8;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        .info-section {
+            padding: 15px;
+            background-color: #f0f9ff;
+            border-bottom: 1px solid #bae6fd;
+            text-align: center;
+        }
+        
+        .info-text {
+            color: #0369a1;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .github-link {
+            color: #dc2626;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .github-link:hover {
+            text-decoration: underline;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px 15px;
+            background-color: #f1f5f9;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .footer p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .last-update {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .sync-status {
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            border-radius: 10px;
+            margin-left: 10px;
+        }
+
+        .sync-local {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .sync-github {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        @media (max-width: 768px) {
+            .form-group {
+                flex-direction: column;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .prato-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .prato-actions {
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-btn">← Voltar</a>
+            <h1>CARDÁPIO DO DIA</h1>
+            <p class="subtitle">Pratos especiais de hoje</p>
+        </header>
+        
+        <!-- Seção para adicionar pratos -->
+        <div class="admin-section">
+            <h2 class="admin-title">Adicionar Prato ao Cardápio</h2>
+            <div class="form-group">
+                <input type="text" id="pratoName" class="form-input" placeholder="Digite o nome do prato...">
+                <button class="btn" onclick="addPrato()">Adicionar Prato</button>
+            </div>
+            <div class="button-group">
+                <button class="btn btn-secondary" onclick="saveToGitHub()">💾 Salvar no GitHub</button>
+                <button class="btn btn-secondary" onclick="loadFromGitHub()">🔄 Carregar do GitHub</button>
+                <button class="btn btn-clear" onclick="clearMenu()">🗑️ Limpar Cardápio</button>
+                <button class="btn btn-clear" onclick="addSamplePratos()">📋 Pratos Exemplo</button>
+            </div>
+        </div>
+
+        <!-- Seção de informações -->
+        <div class="info-section">
+            <p class="info-text">
+                💡 Os pratos são salvos automaticamente no navegador. Use "Salvar no GitHub" para manter backup.
+            </p>
+            <a href="https://github.com/ferreira396/cardapio/edit/main/cardapio-data.json" 
+               class="github-link" target="_blank">
+               📝 Editar Diretamente no GitHub
+            </a>
+            <span id="syncStatus" class="sync-status sync-local">Salvo Localmente</span>
+        </div>
+        
+        <!-- Exibição do cardápio -->
+        <div class="menu-display">
+            <div class="date-display" id="currentDate"></div>
+            
+            <div id="menuContent">
+                <!-- Os pratos serão carregados aqui dinamicamente -->
+                <div class="empty-message" id="emptyMessage">
+                    Nenhum prato adicionado ao cardápio do dia ainda.
+                </div>
+                
+                <ul class="pratos-list" id="pratosList">
+                    <!-- Lista de pratos será gerada aqui -->
+                </ul>
+            </div>
+            
+            <div class="last-update" id="lastUpdate"></div>
+        </div>
+        
+        <div class="footer">
+            <p>Cardápio atualizado diariamente</p>
+            <p>@restaurantesenacma</p>
+        </div>
+    </div>
+
+    <script>
+        // URLs do seu repositório GitHub
+        const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/ferreira396/cardapio/main/cardapio-data.json';
+        const GITHUB_EDIT_URL = 'https://github.com/ferreira396/cardapio/edit/main/cardapio-data.json';
+        
+        // Atualizar data atual
+        function updateCurrentDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = now.toLocaleDateString('pt-BR', options);
+            document.getElementById('currentDate').textContent = formattedDate;
+        }
+        
+        // Carregar pratos do localStorage
+        function loadMenu() {
+            const pratos = JSON.parse(localStorage.getItem('dailyPratos')) || [];
+            displayPratos(pratos);
+            updateLastUpdate();
+        }
+        
+        // Adicionar prato
+        function addPrato() {
+            const pratoInput = document.getElementById('pratoName');
+            const pratoName = pratoInput.value.trim();
+            
+            if (!pratoName) {
+                alert('Por favor, digite o nome do prato.');
+                return;
+            }
+            
+            const pratos = JSON.parse(localStorage.getItem('dailyPratos')) || [];
+            pratos.push(pratoName);
+            
+            localStorage.setItem('dailyPratos', JSON.stringify(pratos));
+            localStorage.setItem('lastUpdate', new Date().toISOString());
+            
+            // Limpar campo de entrada
+            pratoInput.value = '';
+            
+            // Atualizar exibição
+            displayPratos(pratos);
+            updateLastUpdate();
+            updateSyncStatus('local');
+            
+            // Focar novamente no campo de entrada
+            pratoInput.focus();
+        }
+        
+        // Remover prato
+        function removePrato(index) {
+            const pratos = JSON.parse(localStorage.getItem('dailyPratos')) || [];
+            pratos.splice(index, 1);
+            
+            localStorage.setItem('dailyPratos', JSON.stringify(pratos));
+            localStorage.setItem('lastUpdate', new Date().toISOString());
+            
+            displayPratos(pratos);
+            updateLastUpdate();
+            updateSyncStatus('local');
+        }
+        
+        // Exibir pratos
+        function displayPratos(pratos) {
+            const pratosList = document.getElementById('pratosList');
+            const emptyMessage = document.getElementById('emptyMessage');
+            
+            if (pratos.length === 0) {
+                emptyMessage.style.display = 'block';
+                pratosList.innerHTML = '';
+                return;
+            }
+            
+            emptyMessage.style.display = 'none';
+            
+            let html = '';
+            pratos.forEach((prato, index) => {
+                html += `
+                    <li class="prato-item">
+                        <div>
+                            <span class="prato-icon">🍽️</span>
+                            <span>${prato}</span>
+                        </div>
+                        <div class="prato-actions">
+                            <button class="delete-btn" onclick="removePrato(${index})">Remover</button>
+                        </div>
+                    </li>
+                `;
+            });
+            
+            pratosList.innerHTML = html;
+        }
+        
+        // Atualizar última atualização
+        function updateLastUpdate() {
+            const lastUpdate = localStorage.getItem('lastUpdate');
+            if (lastUpdate) {
+                const date = new Date(lastUpdate);
+                document.getElementById('lastUpdate').textContent = 
+                    `Última atualização: ${date.toLocaleString('pt-BR')}`;
+            } else {
+                document.getElementById('lastUpdate').textContent = '';
+            }
+        }
+        
+        // Atualizar status de sincronização
+        function updateSyncStatus(type) {
+            const syncStatus = document.getElementById('syncStatus');
+            if (type === 'local') {
+                syncStatus.textContent = 'Salvo Localmente';
+                syncStatus.className = 'sync-status sync-local';
+            } else if (type === 'github') {
+                syncStatus.textContent = 'Salvo no GitHub';
+                syncStatus.className = 'sync-status sync-github';
+            }
+        }
+        
+        // Adicionar pratos de exemplo
+        function addSamplePratos() {
+            const samplePratos = [
+                "Feijoada Completa",
+                "Frango Grelhado com Legumes",
+                "Moqueca de Peixe",
+                "Lasanha à Bolonhesa",
+                "Risoto de Cogumelos",
+                "Salada Caesar com Frango",
+                "Sobremesa do Dia"
+            ];
+            
+            const pratos = JSON.parse(localStorage.getItem('dailyPratos')) || [];
+            pratos.push(...samplePratos);
+            
+            localStorage.setItem('dailyPratos', JSON.stringify(pratos));
+            localStorage.setItem('lastUpdate', new Date().toISOString());
+            
+            displayPratos(pratos);
+            updateLastUpdate();
+            updateSyncStatus('local');
+        }
+        
+        // Limpar cardápio
+        function clearMenu() {
+            if (confirm('Tem certeza que deseja limpar todo o cardápio do dia?')) {
+                localStorage.removeItem('dailyPratos');
+                localStorage.setItem('lastUpdate', new Date().toISOString());
+                loadMenu();
+                updateSyncStatus('local');
+            }
+        }
+        
+        // Salvar no GitHub (gera JSON para copiar)
+        async function saveToGitHub() {
+            const pratos = JSON.parse(localStorage.getItem('dailyPratos')) || [];
+            const lastUpdate = localStorage.getItem('lastUpdate');
+            
+            const data = {
+                ultimaAtualizacao: lastUpdate ? new Date(lastUpdate).toLocaleString('pt-BR') : new Date().toLocaleString('pt-BR'),
+                pratos: pratos
+            };
+            
+            try {
+                // Mostrar dados para copiar manualmente
+                const jsonData = JSON.stringify(data, null, 2);
+                
+                // Criar um textarea para facilitar a cópia
+                const textarea = document.createElement('textarea');
+                textarea.value = jsonData;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                
+                alert('✅ JSON copiado para a área de transferência!\n\nAgora vá para o GitHub e cole no arquivo cardapio-data.json\n\nClique em "OK" para abrir o GitHub.');
+                
+                // Abrir o GitHub para edição
+                window.open(GITHUB_EDIT_URL, '_blank');
+                
+                updateSyncStatus('github');
+                
+            } catch (error) {
+                alert('Erro ao copiar os dados. Aqui está o JSON:\n\n' + JSON.stringify(data, null, 2));
+            }
+        }
+        
+        // Carregar do GitHub
+        async function loadFromGitHub() {
+            try {
+                const response = await fetch(GITHUB_RAW_URL + '?t=' + new Date().getTime());
+                
+                if (!response.ok) {
+                    throw new Error('Erro ao carregar do GitHub');
+                }
+                
+                const data = await response.json();
+                
+                // Salvar no localStorage
+                localStorage.setItem('dailyPratos', JSON.stringify(data.pratos || []));
+                localStorage.setItem('lastUpdate', new Date().toISOString());
+                
+                // Atualizar exibição
+                displayPratos(data.pratos || []);
+                updateLastUpdate();
+                updateSyncStatus('github');
+                
+                alert('✅ Cardápio carregado do GitHub com sucesso!');
+                
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('❌ Erro ao carregar do GitHub. Verifique se o arquivo cardapio-data.json existe no repositório.');
+            }
+        }
+        
+        // Permitir adicionar com Enter
+        document.getElementById('pratoName').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addPrato();
+            }
+        });
+        
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCurrentDate();
+            loadMenu();
+            
+            // Focar no campo de entrada
+            document.getElementById('pratoName').focus();
+            
+            // Tentar carregar do GitHub automaticamente na primeira vez
+            const hasLocalData = localStorage.getItem('dailyPratos');
+            if (!hasLocalData) {
+                setTimeout(() => {
+                    loadFromGitHub().catch(() => {
+                        // Ignora erro se não conseguir carregar do GitHub
+                        console.log('Não foi possível carregar do GitHub na inicialização');
+                    });
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>00

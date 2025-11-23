@@ -51,6 +51,15 @@
             transition: 0.3s;
         }
 
+        /* Botão especial para cardápio do dia */
+        .botao-especial {
+            background: linear-gradient(90deg, #dc2626, #ef4444);
+        }
+
+        .botao-especial:hover {
+            background: linear-gradient(90deg, #ef4444, #dc2626);
+        }
+
         /* Efeito ao passar o mouse */
         .botao:hover {
             background: linear-gradient(90deg, #3b82f6, #1e3a8a);
@@ -65,6 +74,8 @@
         <!-- Botão leva para index.html -->
         <button class="botao" onclick="window.location.href='pagina1.html'">Carta de Bar</button>
         <button class="botao" onclick="window.location.href='pagina2.html'">Carta de Vinho</button>
+        <!-- Novo botão para Cardápio do Dia -->
+        <button class="botao botao-especial" onclick="window.location.href='cardapio-do-dia.html'">Cardápio do Dia</button>
     </div>
 
 </body>
