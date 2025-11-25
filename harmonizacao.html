@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio de Bebidas - Harmonização</title>
+    <style>
+        :root {
+            --primary-color: #2b14ff;
+            --secondary-color: #0f3bff;
+            --accent-color: #F4A460;
+            --light-color: #ffffff;
+            --dark-color: #0011ff;
+            --text-color: #333;
+            --white: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .day-section {
+            margin-bottom: 3rem;
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .day-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .day-description {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: var(--dark-color);
+        }
+        
+        .harmonization-section {
+            margin-bottom: 2rem;
+        }
+        
+        .harmonization-title {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .harmonization-list {
+            list-style-type: none;
+        }
+        
+        .harmonization-item {
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            background-color: var(--light-color);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 4px;
+        }
+        
+        .category-section {
+            margin-bottom: 2rem;
+        }
+        
+        .category-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .category-title .icon {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .product-card {
+            background-color: var(--white);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .product-name .icon {
+            margin-right: 8px;
+        }
+        
+        .product-price {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .day-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cardápio de Bebidas</h1>
+        <p class="subtitle">Harmonização com o Buffet Executivo</p>
+    </header>
+    
+    <div class="container">
+        <!-- Segunda a Quarta -->
+        <section class="day-section">
+            <h2 class="day-title">Segunda a Quarta-feira</h2>
+            <p class="day-description">Cozinha Nacional e Internacional - Variedades de pratos de cozinha nacional e internacional</p>
+            
+            <div class="harmonization-section">
+                <h3 class="harmonization-title">Harmonização Sugerida</h3>
+                <ul class="harmonization-list">
+                    <li class="harmonization-item">
+                        <strong>Para pratos nacionais (Feijoada, Carne de Sol, etc.):</strong> 
+                        Caipirinha (cachaça 51), Cervejas brasileiras (Dona Pilsen), Cachaças artesanais (Vale do Riachão, Salinas)
+                    </li>
+                    <li class="harmonization-item">
+                        <strong>Para pratos internacionais (Massas, Carnes, etc.):</strong> 
+                        Vinhos tintos argentinos (Malbec, Cabernet Sauvignon), Vinhos italianos (Caleo Primitivo), Gin Tônica
+                    </li>
+                    <li class="harmonization-item">
+                        <strong>Para pratos mais leves (Saladas, Peixes):</strong> 
+                        Vinhos brancos (Chardonnay, Sauvignon Blanc), Aperol Spritz, Sucos naturais
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="category-section">
+                <h3 class="category-title"><span class="icon">🍹</span> Drinks & Coquetéis</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍹</span> Caipirinha (cachaça 51)</div>
+                        <div class="product-price">R$ 22,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍹</span> Caipirinha especial</div>
+                        <div class="product-price">R$ 26,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍹</span> Aperol Spritz</div>
+                        <div class="product-price">R$ 30,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍹</span> Gin Basil Smash</div>
+                        <div class="product-price">R$ 28,00</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-section">
+                <h3 class="category-title"><span class="icon">🍷</span> Vinhos</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍷</span> Septima (Malbec)</div>
+                        <div class="product-price">R$ 115,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍷</span> Trapiche (Cabernet Sauvignon)</div>
+                        <div class="product-price">R$ 89,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍷</span> Caleo Primitivo di Manduria (Tinto)</div>
+                        <div class="product-price">R$ 120,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍷</span> Casa Perini Solidário (Cabernet/Merlot)</div>
+                        <div class="product-price">R$ 95,00</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-section">
+                <h3 class="category-title"><span class="icon">🍺</span> Cervejas</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍺</span> Dona Pilsen (500 ml)</div>
+                        <div class="product-price">R$ 16,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍺</span> Dona IPA (500 ml)</div>
+                        <div class="product-price">R$ 20,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍺</span> Heineken (long neck)</div>
+                        <div class="product-price">R$ 15,00</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Quinta-feira -->
+        <section class="day-section">
+            <h2 class="day-title">Quinta-feira</h2>
+            <p class="day-description">Buffet Nordestino - Variedades de pratos regionais do Maranhão</p>
+            
+            <div class="harmonization-section">
+                <h3 class="harmonization-title">Harmonização Sugerida</h3>
+                <ul class="harmonization-list">
+                    <li class="harmonization-item">
+                        <strong>Para pratos com peixe e frutos do mar:</strong> 
+                        Vinhos brancos (Almar Chardonnay), Cervejas (Dona Mosaic Lager), Caipirinha de limão
+                    </li>
+                    <li class="harmonization-item">
+                        <strong>Para pratos com carne de sol e carnes:</strong> 
+                        Cachaças artesanais (Tiquira Guaajá - MA), Vinhos tintos (Cordero Cabernet), Cervejas especiais
+                    </li>
+                    <li class="harmonization-item">
+                        <strong>Para acompanhar o arroz de cuxá:</strong> 
+                        Sucos regionais (bacuri, cupuaçu), Água de coco, Caipirinha com outras frutas
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="category-section">
+                <h3 class="category-title"><span class="icon">🍹</span> Drinks & Coquetéis</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍹</span> Caipirinha c/ outras frutas (cachaça 51)</div>
+                        <div class="product-price">R$ 26,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍹</span> Caipirinha c/ outras frutas (cachaça especial)</div>
+                        <div class="product-price">R$ 30,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍹</span> Mojito</div>
+                        <div class="product-price">R$ 28,00</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-section">
+                <h3 class="category-title"><span class="icon">🥃</span> Cachaças</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🥃</span> Tiquira Guaajá (MA)</div>
+                        <div class="product-price">R$ 22,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🥃</span> Vale do Riachão Ouro ou Prata</div>
+                        <div class="product-price">R$ 18,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🥃</span> Salinas (MG)</div>
+                        <div class="product-price">R$ 18,00</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-section">
+                <h3 class="category-title"><span class="icon">🧃</span> Sucos Regionais</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🧃</span> Suco Bacuri (copo)</div>
+                        <div class="product-price">R$ 18,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🧃</span> Suco Cupuaçu (copo)</div>
+                        <div class="product-price">R$ 18,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🧃</span> Suco de Graviola (copo)</div>
+                        <div class="product-price">R$ 18,00</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sexta-feira -->
+        <section class="day-section">
+            <h2 class="day-title">Sexta-feira</h2>
+            <p class="day-description">Buffet de Frutos do Mar - Variedades de pratos à base de frutos do mar</p>
+            
+            <div class="harmonization-section">
+                <h3 class="harmonization-title">Harmonização Sugerida</h3>
+                <ul class="harmonization-list">
+                    <li class="harmonization-item">
+                        <strong>Para peixes grelhados e moquecas:</strong> 
+                        Vinhos brancos (Septima Chardonnay, Signature Sauvignon Blanc), Espumantes (La Jolie Blanc Brut)
+                    </li>
+                    <li class="harmonization-item">
+                        <strong>Para camarões e frutos do mar em geral:</strong> 
+                        Caipirinha de limão, Gin Tônica, Vinhos rosé (Astica Rosé, Soleil des Alpes)
+                    </li>
+                    <li class="harmonization-item">
+                        <strong>Para pratos mais elaborados:</strong> 
+                        Vinhos brancos estruturados (Chardonnay), Cervejas especiais (Dona Mosaic Lager)
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="category-section">
+                <h3 class="category-title"><span class="icon">🍷</span> Vinhos Brancos e Rosé</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍷</span> Septima (Chardonnay)</div>
+                        <div class="product-price">R$ 102,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍷</span> Signature Reserva Especial (Sauvignon Blanc)</div>
+                        <div class="product-price">R$ 114,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍷</span> Astica (Rosé)</div>
+                        <div class="product-price">R$ 80,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍷</span> Soleil des Alpes (Rosé)</div>
+                        <div class="product-price">R$ 114,00</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-section">
+                <h3 class="category-title"><span class="icon">🥂</span> Espumantes</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🥂</span> La Jolie Blanc Brut (França)</div>
+                        <div class="product-price">R$ 95,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🥂</span> La Jolie Rosé Brut (França)</div>
+                        <div class="product-price">R$ 95,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🥂</span> Chandon Brut (França)</div>
+                        <div class="product-price">R$ 101,00</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-section">
+                <h3 class="category-title"><span class="icon">🍹</span> Drinks Refrescantes</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍹</span> Caipiroska (vodka nacional)</div>
+                        <div class="product-price">R$ 28,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍹</span> Moscow Mule</div>
+                        <div class="product-price">R$ 30,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍹</span> Margarita</div>
+                        <div class="product-price">R$ 28,00</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sábado -->
+        <section class="day-section">
+            <h2 class="day-title">Sábado</h2>
+            <p class="day-description">Buffet de Feijoada - O principal do dia é feijoada, com duas proteínas que completam o buffet</p>
+            
+            <div class="harmonization-section">
+                <h3 class="harmonization-title">Harmonização Sugerida</h3>
+                <ul class="harmonization-list">
+                    <li class="harmonization-item">
+                        <strong>Para a feijoada completa:</strong> 
+                        Caipirinha tradicional (cachaça 51), Cervejas (Dona Pilsen, Heineken), Batidas de limão
+                    </li>
+                    <li class="harmonization-item">
+                        <strong>Para as proteínas adicionais (frango, carne):</strong> 
+                        Vinhos tintos encorpados (Malbec, Cabernet Sauvignon), Cachaças especiais (Capotira, Baronesa)
+                    </li>
+                    <li class="harmonization-item">
+                        <strong>Para finalizar:</strong> 
+                        Cachaças envelhecidas, Licores (Frangélico, 43), Café expresso
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="category-section">
+                <h3 class="category-title"><span class="icon">🍹</span> Drinks & Coquetéis</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍹</span> Caipirinha (cachaça 51)</div>
+                        <div class="product-price">R$ 22,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍹</span> Caipirinha especial</div>
+                        <div class="product-price">R$ 26,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍹</span> Batida de Limão</div>
+                        <div class="product-price">R$ 20,00</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-section">
+                <h3 class="category-title"><span class="icon">🥃</span> Cachaças</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🥃</span> Capotira</div>
+                        <div class="product-price">R$ 18,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🥃</span> Baronesa</div>
+                        <div class="product-price">R$ 18,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🥃</span> Reserva do Zito</div>
+                        <div class="product-price">R$ 18,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🥃</span> Salinas (MG)</div>
+                        <div class="product-price">R$ 18,00</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-section">
+                <h3 class="category-title"><span class="icon">🍷</span> Vinhos Tintos</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍷</span> Septima (Malbec)</div>
+                        <div class="product-price">R$ 115,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍷</span> Cordero (Cabernet Sauvignon)</div>
+                        <div class="product-price">R$ 101,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍷</span> Signature (Cabernet Sauvignon)</div>
+                        <div class="product-price">R$ 114,00</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-section">
+                <h3 class="category-title"><span class="icon">☕</span> Cafés & Finalizadores</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">☕</span> Café expresso</div>
+                        <div class="product-price">R$ 8,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍷</span> Porto (cálice)</div>
+                        <div class="product-price">R$ 25,00</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name"><span class="icon">🍷</span> Licor 43</div>
+                        <div class="product-price">R$ 26,00</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>Cardápio de Bebidas - Harmonização com Buffet Executivo</p>
+        <p>Preços sujeitos a alteração sem aviso prévio</p>
+    </footer>
+</body>
+</html>
